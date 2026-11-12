@@ -3,6 +3,25 @@ document.addEventListener('DOMContentLoaded', function() {
     // Prevent scrolling initially
     document.body.classList.add('loading');
 
+    // ===== Handle URL Parameters for Different Views =====
+    const urlParams = new URLSearchParams(window.location.search);
+    const viewMode = urlParams.get('view');
+
+    // Hide specific event cards if view=simple
+    if (viewMode === 'simple') {
+        const eventCards = document.querySelectorAll('.event-card');
+
+        // Hide Haldi/Dua card (1st card, index 0)
+        if (eventCards[0]) {
+            eventCards[0].style.display = 'none';
+        }
+
+        // Hide Mehendi card (2nd card, index 1)
+        if (eventCards[1]) {
+            eventCards[1].style.display = 'none';
+        }
+    }
+
     // Get elements
     const introScreen = document.getElementById('intro-screen');
     const openBtn = document.getElementById('open-btn');
@@ -168,7 +187,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // ===== Countdown Timer with Flip Animation =====
     function initializeCountdown() {
         // Set wedding date: November 28, 2026
-        const weddingDate = new Date('2026-11-28T16:00:00').getTime();
+        const weddingDate = new Date('2026-11-28T11:00:00').getTime();
 
         // Store previous values for flip animation
         let prevDays = -1, prevHours = -1, prevMinutes = -1, prevSeconds = -1;
