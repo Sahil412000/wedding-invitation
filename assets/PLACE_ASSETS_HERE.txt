@@ -1,0 +1,29 @@
+Please add the following files to this folder:
+
+Required Assets:
+================
+
+1. beach-arch.jpg
+   - The beach wedding arch background image (Image #1 from Desktop)
+   - Used as the initial screen background
+
+2. couple-image.jpg
+   - The couple in traditional attire image (Image #2 from Desktop)
+   - Used in the main hero section after video
+
+3. intro-video.mp4
+   - The wedding intro video (Image #3 from Desktop)
+   - Plays fullscreen when "Open" button is clicked
+
+4. bg-music.mp3 or bg-music.m4a
+   - Background music file
+   - Plays during video and throughout the website
+
+File Naming:
+============
+- Names must match exactly as listed above (case-sensitive)
+- Use .jpg for images
+- Use .mp4 for video (H.264 codec recommended)
+- Use .mp3 or .m4a for audio
+
+After adding files, you can delete this text file.

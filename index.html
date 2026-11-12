@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Invitation</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Initial Screen with Open Button -->
+    <div id="intro-screen" class="intro-screen active">
+        <div class="intro-content">
+            <button id="open-btn" class="open-button">
+                <span class="btn-text">TAP TO OPEN</span>
+                <div class="btn-ripple"></div>
+            </button>
+        </div>
+    </div>
+
+    <!-- Video Overlay -->
+    <div id="video-overlay" class="video-overlay">
+        <video id="intro-video" class="intro-video" playsinline>
+            <source src="assets/intro-video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <audio id="bg-music" loop>
+            <source src="assets/bg-music.mp3" type="audio/mpeg">
+            <source src="assets/bg-music.m4a" type="audio/mp4">
+        </audio>
+    </div>
+
+    <!-- Main Content -->
+    <div id="main-content" class="main-content">
+
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <!-- Couple Image Centered -->
+            <div class="couple-container">
+                <img src="assets/couple-image.png" alt="Couple" class="couple-image">
+            </div>
+
+            <!-- Text Overlay -->
+            <div class="invitation-text">
+                <p class="families-text">Together with our families</p>
+                <h1 class="couple-names">Chandni Kukreja</h1>
+                <p class="ampersand">&</p>
+                <h1 class="couple-names">Daljeet Singh</h1>
+                <div class="wedding-details">
+                    <p class="wedding-location">HOTEL GRAND TAMANNA · HINJEWADI</p>
+                </div>
+            </div>
+
+            <!-- Countdown Timer -->
+            <div class="countdown-container" data-aos="fade-up" data-aos-delay="200">
+                <div class="countdown-pretitle">THE WAITING</div>
+                <h2 class="countdown-title">Until the gates open</h2>
+                <div class="countdown-timer">
+                    <div class="time-box">
+                        <div class="time-value-wrapper">
+                            <span id="days" class="time-value">00</span>
+                        </div>
+                        <span class="time-label">DAYS</span>
+                    </div>
+                    <div class="time-box">
+                        <div class="time-value-wrapper">
+                            <span id="hours" class="time-value">00</span>
+                        </div>
+                        <span class="time-label">HOURS</span>
+                    </div>
+                    <div class="time-box">
+                        <div class="time-value-wrapper">
+                            <span id="minutes" class="time-value">00</span>
+                        </div>
+                        <span class="time-label">MINUTES</span>
+                    </div>
+                    <div class="time-box">
+                        <div class="time-value-wrapper">
+                            <span id="seconds" class="time-value">00</span>
+                        </div>
+                        <span class="time-label">SECONDS</span>
+                    </div>
+                </div>
+
+                <!-- Scratch Card -->
+                <div class="scratch-card-container">
+                    <p class="scratch-instruction">Scratch to reveal the date</p>
+                    <div class="scratch-card-wrapper">
+                        <canvas id="scratchCard" class="scratch-canvas"></canvas>
+                        <div class="scratch-reveal">
+                            <p class="reveal-date">Friday, 28 November 2026</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Decorative Elements -->
+            <div class="floral-divider" data-aos="fade-up" data-aos-delay="600">
+                <svg viewBox="0 0 200 20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 10 Q 50 5, 100 10 T 200 10" stroke="#c9a96e" stroke-width="1" fill="none"/>
+                    <circle cx="100" cy="10" r="3" fill="#c9a96e"/>
+                </svg>
+            </div>
+        </section>
+
+        <!-- Our Story Section -->
+        <section class="story-section" data-aos="fade-up">
+            <div class="story-container">
+                <p class="story-pretitle">OUR INVITATION</p>
+                <h2 class="story-title">A love written in tides</h2>
+
+                <div class="story-divider">
+                    <svg viewBox="0 0 100 20" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="45" y="9" width="10" height="2" fill="#c9a96e" transform="rotate(45 50 10)"/>
+                    </svg>
+                </div>
+
+                <div class="story-text">
+                    <p class="story-paragraph">
+                        From classroom conversations to wedding celebrations,
+                        our forever starts here.
+                    </p>
+                </div>
+
+                <p class="story-tagline">Two souls, one shore</p>
+
+                <div class="story-decoration">
+                    <img src="assets/shells.png" alt="Shells decoration" class="shells-image" />
+                </div>
+            </div>
+        </section>
+
+        <!-- Celebrations Section -->
+        <section class="celebrations-section" data-aos="fade-up">
+            <div class="celebrations-container">
+                <!-- Garland Decoration -->
+                <div class="garland-decoration">
+                    <img src="assets/garland.png" alt="Floral Garland" class="garland-image" />
+                </div>
+
+                <p class="celebrations-pretitle">FOUR DAYS OF JOY</p>
+                <h2 class="celebrations-title">Celebrations</h2>
+
+                <div class="celebrations-divider">
+                    <svg viewBox="0 0 100 20" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="45" y="9" width="10" height="2" fill="#c9a96e" transform="rotate(45 50 10)"/>
+                    </svg>
+                </div>
+
+                <!-- Events List -->
+                <div class="events-list">
+                    <!-- Haldi -->
+                    <div class="event-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="event-icon">
+                            <svg width="30" height="30" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M15 3 L17 13 L27 15 L17 17 L15 27 L13 17 L3 15 L13 13 Z" fill="#c9a96e"/>
+                            </svg>
+                        </div>
+                        <div class="event-content">
+                            <h3 class="event-name">Dua</h3>
+                            <p class="event-datetime">27 NOV 2026 · 12:00 PM</p>
+                            <p class="event-venue">Simran Appartment, Flat no. 123, 4th floor, Kalewadi, Pune</p>
+                        </div>
+                    </div>
+
+                    <!-- Mehendi -->
+                    <div class="event-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="event-icon">
+                            <svg width="30" height="30" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="15" cy="15" r="8" fill="none" stroke="#c9a96e" stroke-width="2"/>
+                                <circle cx="15" cy="15" r="3" fill="#c9a96e"/>
+                                <circle cx="15" cy="8" r="1.5" fill="#c9a96e"/>
+                                <circle cx="15" cy="22" r="1.5" fill="#c9a96e"/>
+                                <circle cx="8" cy="15" r="1.5" fill="#c9a96e"/>
+                                <circle cx="22" cy="15" r="1.5" fill="#c9a96e"/>
+                            </svg>
+                        </div>
+                        <div class="event-content">
+                            <h3 class="event-name">Mehendi</h3>
+                            <p class="event-datetime">27 NOV 2026 · 8:00 PM</p>
+                        </div>
+                    </div>
+
+                    <!-- Sangeet -->
+                    <div class="event-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="event-icon">
+                            <svg width="30" height="30" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M15 5 L18 12 L25 13 L20 18 L21 25 L15 21 L9 25 L10 18 L5 13 L12 12 Z" fill="none" stroke="#c9a96e" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <div class="event-content">
+                            <h3 class="event-name">Engagement</h3>
+                            <p class="event-datetime">27 NOV 2026 · 8:00 PM</p>
+                            <p class="event-venue">Hotel Grand Tamanna, Hinjewadi</p>
+                            <p class="event-description">Dancing floor opens after dinner.</p>
+                        </div>
+                    </div>
+
+                    <!-- Wedding -->
+                    <div class="event-card" data-aos="fade-up" data-aos-delay="400">
+                        <div class="event-icon">
+                            <svg width="30" height="30" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M15 8 Q12 12, 15 16 Q18 12, 15 8" fill="#c9a96e"/>
+                                <circle cx="12" cy="10" r="3" fill="none" stroke="#c9a96e" stroke-width="1.5"/>
+                                <circle cx="18" cy="10" r="3" fill="none" stroke="#c9a96e" stroke-width="1.5"/>
+                                <path d="M10 20 Q15 18, 20 20" stroke="#c9a96e" stroke-width="2" fill="none"/>
+                            </svg>
+                        </div>
+                        <div class="event-content">
+                            <h3 class="event-name">Wedding</h3>
+                            <p class="event-datetime">28 NOV 2026 · 11:00 AM</p>
+                            <p class="event-venue">Hotel Grand Tamanna, Hinjewadi</p>
+                            <p class="event-description">We found our forever together</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sky Lanterns Section -->
+        <section class="lanterns-section" data-aos="fade-up">
+            <div class="lanterns-container">
+                <!-- Main Lantern Image -->
+                <div class="main-lantern">
+                    <img src="assets/lantern.png" alt="Sky Lantern" class="lantern-image" />
+                </div>
+
+                <!-- Wish Content -->
+                <div class="wish-content">
+                    <h2 class="wish-title">Send them a wish</h2>
+                    <p class="wish-subtitle">Release a sky full of light for their new beginning.</p>
+
+                    <button id="release-lanterns-btn" class="release-button">
+                        RELEASE LANTERNS
+                    </button>
+
+                    <p class="wish-message">The sky is glowing for Chandni Kukreja and Daljeet Singh.</p>
+                </div>
+            </div>
+
+            <!-- Lantern Animation Container -->
+            <div id="lanterns-animation-container" class="lanterns-animation-container"></div>
+        </section>
+
+        <!-- Venue Section -->
+        <section class="venue-section" data-aos="fade-up">
+            <div class="venue-container">
+                <p class="venue-pretitle">FIND YOUR WAY</p>
+                <h2 class="venue-title">The venue</h2>
+
+                <div class="venue-divider">
+                    <svg viewBox="0 0 100 20" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="45" y="9" width="10" height="2" fill="#c9a96e" transform="rotate(45 50 10)"/>
+                    </svg>
+                </div>
+
+                <!-- Map Card -->
+                <div class="venue-map-card">
+                    <div class="map-image-container">
+                        <img src="assets/venue-map.png" alt="Venue Map" class="venue-map-image" />
+                    </div>
+
+                    <div class="venue-details">
+                        <h3 class="venue-name">Hotel Grand Tamanna</h3>
+                        <p class="venue-address">Hinjewadi, Pune</p>
+
+                        <a href="https://maps.app.goo.gl/G4R5kJ2q3VrNdZM5A" target="_blank" rel="noopener noreferrer" class="maps-button">
+                            OPEN IN GOOGLE MAPS
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <!-- Bouquet Decoration -->
+            <div class="footer-bouquet">
+                <img src="assets/bouquet.png" alt="Flower Bouquet" class="bouquet-image" />
+            </div>
+
+            <!-- Footer Content -->
+            <div class="footer-content">
+                <p class="footer-message">We cannot wait to celebrate with you</p>
+                <h2 class="footer-names">
+                    <span class="footer-name">Chandni Kukreja</span>
+                    <span class="footer-ampersand">&</span>
+                    <span class="footer-name">Daljeet Singh</span>
+                </h2>
+            </div>
+
+            <!-- Floating Lanterns Container -->
+            <div class="footer-lanterns-container">
+                <img src="assets/lantern.png" alt="Lantern" class="footer-lantern lantern-1" />
+                <img src="assets/lantern.png" alt="Lantern" class="footer-lantern lantern-2" />
+                <img src="assets/lantern.png" alt="Lantern" class="footer-lantern lantern-3" />
+                <img src="assets/lantern.png" alt="Lantern" class="footer-lantern lantern-4" />
+                <img src="assets/lantern.png" alt="Lantern" class="footer-lantern lantern-5" />
+            </div>
+        </footer>
+    </div>
+
+    <!-- Confetti Container -->
+    <canvas id="confetti-canvas" class="confetti-canvas"></canvas>
+
+    <!-- AOS Animation Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Confetti Library -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+    <!-- Main Script -->
+    <script src="js/script.js"></script>
+</body>
+</html>

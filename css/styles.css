@@ -1,0 +1,1946 @@
+/* ===== CSS Variables ===== */
+:root {
+    --primary-gold: #c9a96e;
+    --secondary-gold: #d4b896;
+    --cream: #f5f3ed;
+    --soft-white: #ffffff;
+    --text-dark: #3d3d3d;
+    --text-light: #6b6b6b;
+    --watercolor-bg: linear-gradient(135deg, #f5f3ed 0%, #faf8f3 50%, #f5f2eb 100%);
+
+    --font-heading: 'Cormorant Garamond', serif;
+    --font-body: 'Montserrat', sans-serif;
+}
+
+/* ===== Reset & Base Styles ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--text-dark);
+    overflow-x: hidden;
+    overflow-y: auto;
+    background: var(--watercolor-bg);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* ===== Intro Screen ===== */
+.intro-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-image: url('../assets/initial-lantern.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    z-index: 1000;
+    opacity: 1;
+    transition: opacity 1s ease-out;
+}
+
+.intro-screen::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.intro-screen.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.intro-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding-bottom: 80px;
+    width: 100%;
+}
+
+/* ===== Open Button ===== */
+.open-button {
+    position: relative;
+    padding: 15px 0;
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--soft-white);
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid var(--soft-white);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.open-button:hover {
+    opacity: 0.8;
+    border-bottom-color: var(--primary-gold);
+    color: var(--primary-gold);
+}
+
+.open-button:active {
+    opacity: 1;
+}
+
+.btn-ripple {
+    display: none;
+}
+
+/* ===== Video Overlay ===== */
+.video-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 1s ease-in-out;
+}
+
+.video-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.intro-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ===== Main Content ===== */
+.main-content {
+    position: relative;
+    opacity: 0;
+    transform: translateY(0);
+    transition: opacity 1s ease-out;
+    min-height: 100vh;
+    background: transparent;
+    will-change: opacity;
+    overflow: visible;
+}
+
+.main-content.visible {
+    opacity: 1 !important;
+    transform: translateY(0);
+    visibility: visible !important;
+}
+
+.main-content.preload {
+    visibility: hidden;
+    opacity: 1;
+}
+
+/* ===== Hero Section ===== */
+.hero-section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0;
+    text-align: center;
+    position: relative;
+    overflow: visible;
+    background-image: url('../assets/beach-arch.png');
+    background-size: 100% auto;
+    background-position: center 0;
+    background-repeat: no-repeat;
+}
+
+.hero-section::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40%;
+    background: linear-gradient(to top, var(--cream) 0%, rgba(245, 243, 237, 0.8) 30%, transparent 100%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Couple Image Container */
+.couple-container {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    margin-top: 80px;
+    z-index: 3;
+}
+
+.couple-image {
+    width: 70%;
+    max-width: 400px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Invitation Text */
+.invitation-text {
+    position: relative;
+    text-align: center;
+    z-index: 3;
+    padding: 30px 20px;
+    width: 100%;
+}
+
+.families-text {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 400;
+    color: #a0826d;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    font-style: italic;
+}
+
+.couple-names {
+    font-family: var(--font-heading);
+    font-size: 48px;
+    font-weight: 400;
+    color: var(--text-dark);
+    margin: 0;
+    line-height: 1;
+    letter-spacing: 2px;
+}
+
+.ampersand {
+    font-family: var(--font-heading);
+    font-size: 28px;
+    font-weight: 300;
+    color: #a0826d;
+    margin: 10px 0;
+    font-style: italic;
+}
+
+.wedding-details {
+    margin-top: 20px;
+}
+
+.wedding-date {
+    font-family: var(--font-body);
+    font-size: 10px;
+    font-weight: 500;
+    color: #666;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.wedding-location {
+    font-family: var(--font-body);
+    font-size: 10px;
+    font-weight: 500;
+    color: #666;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* ===== Countdown Timer ===== */
+.countdown-container {
+    margin: 0px auto 50px auto;
+    padding: 40px 20px;
+    position: relative;
+    z-index: 3;
+    max-width: 100%;
+    opacity: 1 !important;
+    visibility: visible !important;
+    text-align: center;
+}
+
+.countdown-pretitle {
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 400;
+    color: #c9a96e;
+    margin-bottom: 15px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+.countdown-title {
+    font-family: var(--font-heading);
+    font-size: 42px;
+    font-weight: 400;
+    color: #6b5949;
+    margin-bottom: 50px;
+    letter-spacing: 1px;
+    line-height: 1.2;
+}
+
+.countdown-timer {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 16px;
+    flex-wrap: nowrap;
+    max-width: 700px;
+    margin: 0 auto 50px auto;
+}
+
+.time-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.6);
+    padding: 35px 25px;
+    border-radius: 25px;
+    flex: 1;
+    min-width: 0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    border: 2px solid #d4b896;
+    position: relative;
+    overflow: hidden;
+}
+
+.time-value-wrapper {
+    position: relative;
+    height: 60px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.time-value {
+    font-family: var(--font-heading);
+    font-size: 48px;
+    font-weight: 400;
+    color: #6b5949;
+    line-height: 1;
+    display: block;
+    animation: flipNumber 0.6s ease-in-out;
+}
+
+@keyframes flipNumber {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.time-value.flip-up {
+    animation: flipUp 0.6s ease-in-out;
+}
+
+@keyframes flipUp {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+}
+
+.time-label {
+    font-family: var(--font-body);
+    font-size: 10px;
+    font-weight: 500;
+    color: #c9a96e;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 12px;
+}
+
+/* ===== Scratch Card ===== */
+.scratch-card-container {
+    position: relative;
+    max-width: 500px;
+    margin: 40px auto 0;
+    text-align: center;
+}
+
+.scratch-instruction {
+    font-family: var(--font-body);
+    font-size: 13px;
+    color: #999;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+    font-style: italic;
+}
+
+.scratch-card-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.scratch-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: grab;
+    z-index: 10;
+    border-radius: 25px;
+}
+
+.scratch-canvas:active {
+    cursor: grabbing;
+}
+
+.scratch-reveal {
+    background: rgba(255, 255, 255, 0.5);
+    padding: 45px 40px;
+    border-radius: 25px;
+    border: 2px solid #d4b896;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    position: relative;
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.reveal-date {
+    font-family: var(--font-heading);
+    font-size: 24px;
+    font-weight: 400;
+    color: #6b5949;
+    font-style: italic;
+    margin: 0;
+    letter-spacing: 1px;
+}
+
+/* ===== Floral Divider ===== */
+.floral-divider {
+    width: 200px;
+    margin: 40px auto;
+    opacity: 0.7;
+    position: relative;
+    z-index: 3;
+    visibility: visible !important;
+}
+
+.floral-divider svg {
+    width: 100%;
+    height: auto;
+}
+
+/* ===== Our Story Section ===== */
+.story-section {
+    padding: 80px 20px;
+    text-align: center;
+    background: var(--cream);
+    position: relative;
+    z-index: 1;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.story-container {
+    max-width: 800px;
+    margin: 0 auto;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.story-pretitle {
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 400;
+    color: #999;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.story-title {
+    font-family: var(--font-heading);
+    font-size: 52px;
+    font-weight: 400;
+    color: var(--text-dark);
+    margin-bottom: 30px;
+    line-height: 1.2;
+}
+
+.story-divider {
+    width: 60px;
+    margin: 30px auto;
+}
+
+.story-text {
+    margin: 40px auto;
+    max-width: 700px;
+}
+
+.story-paragraph {
+    font-family: var(--font-heading);
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--text-dark);
+    line-height: 1.8;
+    margin: 0;
+}
+
+.story-tagline {
+    font-family: var(--font-heading);
+    font-size: 32px;
+    font-weight: 400;
+    color: #c9a96e;
+    font-style: italic;
+    margin: 50px 0 40px;
+}
+
+.story-decoration {
+    margin-top: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.shells-image {
+    max-width: 500px;
+    width: 80%;
+    height: auto;
+    filter: drop-shadow(0 4px 15px rgba(0, 0, 0, 0.1));
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* ===== Celebrations Section ===== */
+.celebrations-section {
+    padding: 70px 20px 80px;
+    text-align: center;
+    background: var(--cream);
+    position: relative;
+    z-index: 1;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.celebrations-container {
+    max-width: 900px;
+    margin: 0 auto;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.garland-decoration {
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.garland-image {
+    max-width: 600px;
+    width: 90%;
+    height: auto;
+}
+
+.celebrations-pretitle {
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 400;
+    color: #999;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+.celebrations-title {
+    font-family: var(--font-heading);
+    font-size: 52px;
+    font-weight: 400;
+    color: var(--text-dark);
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.celebrations-divider {
+    width: 60px;
+    margin: 20px auto 35px;
+}
+
+/* Events List */
+.events-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 700px;
+    margin: 0 auto;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.event-card {
+    background: rgba(255, 255, 255, 0.6);
+    padding: 30px;
+    border-radius: 15px;
+    border: 1px solid #d4b896;
+    display: flex;
+    align-items: flex-start;
+    gap: 25px;
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.event-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+}
+
+.event-icon {
+    flex-shrink: 0;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid #d4b896;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.event-content {
+    flex: 1;
+}
+
+.event-name {
+    font-family: var(--font-heading);
+    font-size: 32px;
+    font-weight: 400;
+    color: var(--text-dark);
+    margin: 0 0 10px 0;
+    line-height: 1;
+}
+
+.event-datetime {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 500;
+    color: #999;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin: 0 0 12px 0;
+}
+
+.event-venue {
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 500;
+    color: #6b5949;
+    margin: 0 0 10px 0;
+}
+
+.event-description {
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 400;
+    color: #999;
+    font-style: italic;
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* ===== Sky Lanterns Section ===== */
+.lanterns-section {
+    padding: 100px 20px;
+    text-align: center;
+    background: var(--cream);
+    position: relative;
+    z-index: 1;
+    opacity: 1 !important;
+    visibility: visible !important;
+    overflow: hidden;
+    background-image: url('../assets/sky-lanterns.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.lanterns-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--cream);
+    opacity: 0.85;
+    z-index: 1;
+}
+
+.lanterns-container {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.main-lantern {
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: center;
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+.lantern-image {
+    max-width: 250px;
+    width: 60%;
+    height: auto;
+    filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.15));
+}
+
+.wish-content {
+    position: relative;
+    z-index: 2;
+}
+
+.wish-title {
+    font-family: var(--font-heading);
+    font-size: 52px;
+    font-weight: 400;
+    color: var(--text-dark);
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.wish-subtitle {
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 400;
+    color: #999;
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
+
+.release-button {
+    background: var(--primary-gold);
+    color: var(--soft-white);
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    padding: 18px 50px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(201, 169, 110, 0.3);
+    margin-bottom: 40px;
+}
+
+.release-button:hover {
+    background: #b89760;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(201, 169, 110, 0.4);
+}
+
+.release-button:active {
+    transform: translateY(0);
+}
+
+.wish-message {
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 400;
+    color: #999;
+    font-style: italic;
+    margin: 0;
+}
+
+/* Lantern Animation Container */
+.lanterns-animation-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 3;
+    overflow: hidden;
+}
+
+.floating-lantern {
+    position: absolute;
+    width: 80px;
+    height: auto;
+    opacity: 0;
+    animation: floatUp 8s ease-out forwards;
+    pointer-events: none;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) translateX(0) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(-100vh) translateX(var(--drift)) rotate(var(--rotate));
+        opacity: 0;
+    }
+}
+
+/* ===== Venue Section ===== */
+.venue-section {
+    padding: 100px 20px;
+    text-align: center;
+    background: var(--cream);
+    position: relative;
+    z-index: 1;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.venue-container {
+    max-width: 900px;
+    margin: 0 auto;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.venue-pretitle {
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 400;
+    color: #999;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.venue-title {
+    font-family: var(--font-heading);
+    font-size: 52px;
+    font-weight: 400;
+    color: var(--text-dark);
+    margin-bottom: 30px;
+    line-height: 1.2;
+}
+
+.venue-divider {
+    width: 60px;
+    margin: 30px auto 50px;
+}
+
+.venue-map-card {
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid #d4b896;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.map-image-container {
+    width: 100%;
+    overflow: hidden;
+    background: #e8f5f5;
+}
+
+.venue-map-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.venue-details {
+    padding: 50px 40px;
+    background: rgba(255, 255, 255, 0.95);
+}
+
+.venue-name {
+    font-family: var(--font-heading);
+    font-size: 36px;
+    font-weight: 400;
+    color: var(--text-dark);
+    margin: 0 0 15px 0;
+    line-height: 1.2;
+}
+
+.venue-address {
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 400;
+    color: #999;
+    margin: 0 0 35px 0;
+    line-height: 1.6;
+}
+
+.maps-button {
+    display: inline-block;
+    background: var(--primary-gold);
+    color: var(--soft-white);
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    padding: 18px 50px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(201, 169, 110, 0.3);
+    text-decoration: none;
+}
+
+.maps-button:hover {
+    background: #b89760;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(201, 169, 110, 0.4);
+}
+
+.maps-button:active {
+    transform: translateY(0);
+}
+
+/* ===== Ceremony Section ===== */
+.ceremony-section {
+    padding: 100px 20px;
+    text-align: center;
+    background: var(--cream);
+    position: relative;
+    z-index: 1;
+    opacity: 1;
+    visibility: visible;
+}
+
+.section-title {
+    font-family: var(--font-heading);
+    font-size: 56px;
+    font-weight: 700;
+    color: var(--primary-gold);
+    margin-bottom: 15px;
+}
+
+.section-subtitle {
+    font-family: var(--font-body);
+    font-size: 18px;
+    font-weight: 300;
+    color: var(--text-light);
+    margin-bottom: 60px;
+    font-style: italic;
+}
+
+.ceremony-details {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    flex-wrap: wrap;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.ceremony-card {
+    background: var(--cream);
+    padding: 50px 40px;
+    border-radius: 15px;
+    min-width: 280px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--secondary-gold);
+}
+
+.ceremony-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+}
+
+.ceremony-icon {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.ceremony-card h3 {
+    font-family: var(--font-heading);
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 15px;
+}
+
+.ceremony-time {
+    font-family: var(--font-body);
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--primary-gold);
+    margin-bottom: 10px;
+}
+
+.ceremony-location {
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--text-light);
+}
+
+/* ===== Footer ===== */
+.footer {
+    padding: 120px 20px 80px;
+    text-align: center;
+    background: var(--cream);
+    background-image: url('../assets/sky-lanterns.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    z-index: 1;
+    opacity: 1 !important;
+    visibility: visible !important;
+    overflow: hidden;
+}
+
+.footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(245, 243, 237, 0.92), rgba(245, 243, 237, 0.88));
+    z-index: 1;
+}
+
+.footer-bouquet {
+    position: relative;
+    z-index: 2;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.bouquet-image {
+    max-width: 200px;
+    width: 50%;
+    height: auto;
+    filter: drop-shadow(0 5px 20px rgba(0, 0, 0, 0.1));
+}
+
+.footer-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.footer-message {
+    font-family: var(--font-heading);
+    font-size: 26px;
+    font-weight: 400;
+    color: #b89760;
+    font-style: italic;
+    margin: 0 0 40px 0;
+    line-height: 1.6;
+}
+
+.footer-names {
+    font-family: var(--font-heading);
+    font-size: 56px;
+    font-weight: 400;
+    color: var(--text-dark);
+    margin: 0;
+    line-height: 1.4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.footer-name {
+    display: block;
+}
+
+.footer-ampersand {
+    font-size: 32px;
+    font-weight: 300;
+    color: #b89760;
+    font-style: italic;
+    display: block;
+    margin: 5px 0;
+}
+
+/* Floating Lanterns in Footer */
+.footer-lanterns-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+    overflow: hidden;
+}
+
+.footer-lantern {
+    position: absolute;
+    width: 60px;
+    height: auto;
+    opacity: 0.7;
+    animation: floatGently 8s ease-in-out infinite;
+}
+
+.lantern-1 {
+    top: 10%;
+    right: 8%;
+    width: 70px;
+    animation-delay: 0s;
+}
+
+.lantern-2 {
+    top: 25%;
+    left: 12%;
+    width: 50px;
+    animation-delay: 1.5s;
+}
+
+.lantern-3 {
+    top: 50%;
+    right: 15%;
+    width: 55px;
+    animation-delay: 3s;
+}
+
+.lantern-4 {
+    bottom: 20%;
+    left: 18%;
+    width: 65px;
+    animation-delay: 2s;
+}
+
+.lantern-5 {
+    top: 15%;
+    right: 30%;
+    width: 45px;
+    animation-delay: 4s;
+}
+
+@keyframes floatGently {
+    0%, 100% {
+        transform: translateY(0px) translateX(0px);
+    }
+    25% {
+        transform: translateY(-15px) translateX(10px);
+    }
+    50% {
+        transform: translateY(-5px) translateX(-5px);
+    }
+    75% {
+        transform: translateY(-20px) translateX(5px);
+    }
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 768px) {
+    .couple-container {
+        margin-top: 200px;
+    }
+
+    .couple-image {
+        width: 65%;
+        max-width: 380px;
+    }
+
+    .couple-names {
+        font-size: 42px;
+    }
+
+    .ampersand {
+        font-size: 24px;
+        margin: 8px 0;
+    }
+
+    .families-text {
+        font-size: 11px;
+    }
+
+    .wedding-date,
+    .wedding-location {
+        font-size: 9px;
+    }
+
+    .open-button {
+        padding: 12px 0;
+        font-size: 13px;
+        letter-spacing: 2.5px;
+    }
+
+    .intro-content {
+        padding-bottom: 70px;
+    }
+
+    .hero-section {
+        background-size: 100% auto;
+        background-position: center 0;
+    }
+
+    .countdown-pretitle {
+        font-size: 10px;
+        letter-spacing: 3px;
+    }
+
+    .countdown-title {
+        font-size: 32px;
+        margin-bottom: 40px;
+    }
+
+    .countdown-timer {
+        gap: 12px;
+    }
+
+    .time-box {
+        padding: 25px 18px;
+        border-radius: 20px;
+    }
+
+    .time-value-wrapper {
+        height: 50px;
+    }
+
+    .time-value {
+        font-size: 38px;
+    }
+
+    .time-label {
+        font-size: 8px;
+        letter-spacing: 1.5px;
+        margin-top: 10px;
+    }
+
+    .reveal-date {
+        font-size: 20px;
+    }
+
+    .scratch-reveal {
+        padding: 40px 25px;
+        min-height: 90px;
+    }
+
+    .scratch-instruction {
+        font-size: 12px;
+        margin-bottom: 18px;
+    }
+
+    .scratch-card-container {
+        max-width: 90%;
+    }
+
+    .section-title {
+        font-size: 42px;
+    }
+
+    .ceremony-section {
+        padding: 60px 20px;
+    }
+
+    .ceremony-details {
+        gap: 30px;
+    }
+
+    .ceremony-card {
+        min-width: 240px;
+        padding: 40px 30px;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+
+    .story-section {
+        padding: 60px 20px;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+
+    .story-container {
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+
+    .story-title {
+        font-size: 42px;
+    }
+
+    .story-paragraph {
+        font-size: 20px;
+        line-height: 1.7;
+    }
+
+    .story-tagline {
+        font-size: 28px;
+        margin: 40px 0 30px;
+    }
+
+    .shells-image {
+        width: 85%;
+        max-width: 450px;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+
+    .celebrations-section {
+        padding: 60px 20px 80px 20px;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+
+    .celebrations-title {
+        font-size: 42px;
+    }
+
+    .celebrations-pretitle {
+        font-size: 10px;
+        letter-spacing: 3px;
+    }
+
+    .garland-image {
+        width: 95%;
+        max-width: 500px;
+    }
+
+    .garland-decoration {
+        margin-bottom: 25px;
+    }
+
+    .celebrations-divider {
+        margin: 18px auto 30px;
+    }
+
+    .events-list {
+        opacity: 1 !important;
+        visibility: visible !important;
+        margin-bottom: 20px;
+    }
+
+    .event-card {
+        padding: 25px;
+        gap: 20px;
+        flex-direction: row;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+
+    .event-icon {
+        width: 50px;
+        height: 50px;
+    }
+
+    .event-name {
+        font-size: 28px;
+    }
+
+    .event-datetime {
+        font-size: 11px;
+        letter-spacing: 1.5px;
+    }
+
+    .event-venue {
+        font-size: 15px;
+    }
+
+    .event-description {
+        font-size: 13px;
+    }
+
+    .lanterns-section {
+        padding: 70px 20px;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+
+    .wish-title {
+        font-size: 42px;
+    }
+
+    .wish-subtitle {
+        font-size: 15px;
+        margin-bottom: 35px;
+    }
+
+    .lantern-image {
+        max-width: 200px;
+        width: 70%;
+    }
+
+    .release-button {
+        padding: 16px 40px;
+        font-size: 13px;
+        margin-bottom: 35px;
+    }
+
+    .wish-message {
+        font-size: 14px;
+    }
+
+    .floating-lantern {
+        width: 60px;
+    }
+
+    .venue-section {
+        padding: 70px 20px 100px 20px;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+
+    .venue-pretitle {
+        font-size: 10px;
+        letter-spacing: 3px;
+    }
+
+    .venue-title {
+        font-size: 42px;
+    }
+
+    .venue-map-card {
+        max-width: 100%;
+        border-radius: 15px;
+    }
+
+    .venue-details {
+        padding: 40px 30px;
+    }
+
+    .venue-name {
+        font-size: 32px;
+    }
+
+    .venue-address {
+        font-size: 15px;
+        margin-bottom: 30px;
+    }
+
+    .maps-button {
+        padding: 16px 40px;
+        font-size: 13px;
+    }
+
+    .footer {
+        padding: 100px 20px 70px;
+    }
+
+    .bouquet-image {
+        max-width: 180px;
+        width: 55%;
+    }
+
+    .footer-bouquet {
+        margin-bottom: 40px;
+    }
+
+    .footer-message {
+        font-size: 22px;
+        margin-bottom: 35px;
+    }
+
+    .footer-names {
+        font-size: 36px;
+    }
+
+    .footer-ampersand {
+        font-size: 28px;
+    }
+
+    .footer-lantern {
+        width: 50px;
+    }
+
+    .lantern-1 {
+        width: 60px;
+    }
+
+    .lantern-2 {
+        width: 45px;
+    }
+
+    .lantern-3 {
+        width: 48px;
+    }
+
+    .lantern-4 {
+        width: 55px;
+    }
+
+    .lantern-5 {
+        width: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .couple-container {
+        margin-top: 200px;
+    }
+
+    .couple-image {
+        width: 65%;
+        max-width: 320px;
+    }
+
+    .couple-names {
+        font-size: 36px;
+    }
+
+    .ampersand {
+        font-size: 20px;
+        margin: 6px 0;
+    }
+
+    .families-text {
+        font-size: 10px;
+    }
+
+    .wedding-date,
+    .wedding-location {
+        font-size: 8px;
+        letter-spacing: 1.5px;
+    }
+
+    .invitation-text {
+        padding: 20px 15px;
+    }
+
+    .open-button {
+        padding: 10px 0;
+        font-size: 12px;
+        letter-spacing: 2px;
+    }
+
+    .intro-content {
+        padding-bottom: 60px;
+    }
+
+    .hero-section {
+        background-size: 100% auto;
+    }
+
+    .countdown-pretitle {
+        font-size: 9px;
+        letter-spacing: 2px;
+    }
+
+    .countdown-title {
+        font-size: 26px;
+        margin-bottom: 30px;
+    }
+
+    .countdown-timer {
+        gap: 8px;
+        max-width: 100%;
+    }
+
+    .time-box {
+        padding: 20px 12px;
+        border-radius: 18px;
+    }
+
+    .time-value-wrapper {
+        height: 40px;
+    }
+
+    .time-value {
+        font-size: 32px;
+    }
+
+    .time-label {
+        font-size: 7px;
+        letter-spacing: 1px;
+        margin-top: 8px;
+    }
+
+    .reveal-date {
+        font-size: 15px;
+    }
+
+    .scratch-reveal {
+        padding: 35px 18px;
+        min-height: 85px;
+    }
+
+    .scratch-instruction {
+        font-size: 11px;
+        margin-bottom: 15px;
+    }
+
+    .scratch-card-container {
+        max-width: 95%;
+        margin: 30px auto 0;
+    }
+
+    .section-title {
+        font-size: 36px;
+    }
+
+    .ceremony-section {
+        padding: 50px 15px;
+    }
+
+    .ceremony-card {
+        min-width: 200px;
+        padding: 35px 25px;
+    }
+
+    .ceremony-card h3 {
+        font-size: 28px;
+    }
+
+    .footer {
+        padding: 60px 20px;
+    }
+
+    .footer-text {
+        font-size: 18px;
+    }
+
+    .story-section {
+        padding: 50px 15px;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+
+    .story-container {
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+
+    .story-pretitle {
+        font-size: 10px;
+        letter-spacing: 3px;
+    }
+
+    .story-title {
+        font-size: 36px;
+    }
+
+    .story-paragraph {
+        font-size: 18px;
+        line-height: 1.6;
+    }
+
+    .story-tagline {
+        font-size: 24px;
+        margin: 35px 0 25px;
+    }
+
+    .shells-image {
+        width: 90%;
+        max-width: 350px;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+
+    .story-decoration {
+        margin-top: 40px;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+
+    .celebrations-section {
+        padding: 50px 15px 100px 15px;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+
+    .celebrations-title {
+        font-size: 36px;
+    }
+
+    .celebrations-pretitle {
+        font-size: 9px;
+        letter-spacing: 2px;
+    }
+
+    .celebrations-divider {
+        margin: 25px auto 40px;
+    }
+
+    .garland-image {
+        width: 98%;
+        max-width: 400px;
+    }
+
+    .garland-decoration {
+        margin-bottom: 25px;
+    }
+
+    .celebrations-divider {
+        margin: 18px auto 30px;
+    }
+
+    .events-list {
+        opacity: 1 !important;
+        visibility: visible !important;
+        margin-bottom: 30px;
+    }
+
+    .event-card {
+        padding: 20px;
+        gap: 15px;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+
+    .event-icon {
+        width: 45px;
+        height: 45px;
+    }
+
+    .event-icon svg {
+        width: 22px;
+        height: 22px;
+    }
+
+    .event-content {
+        text-align: center;
+    }
+
+    .event-name {
+        font-size: 26px;
+        margin-bottom: 8px;
+    }
+
+    .event-datetime {
+        font-size: 10px;
+        letter-spacing: 1px;
+        margin-bottom: 10px;
+    }
+
+    .event-venue {
+        font-size: 14px;
+        margin-bottom: 8px;
+    }
+
+    .event-description {
+        font-size: 12px;
+    }
+
+    .lanterns-section {
+        padding: 60px 15px;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+
+    .wish-title {
+        font-size: 36px;
+        margin-bottom: 15px;
+    }
+
+    .wish-subtitle {
+        font-size: 14px;
+        margin-bottom: 30px;
+        padding: 0 10px;
+    }
+
+    .lantern-image {
+        max-width: 180px;
+        width: 75%;
+    }
+
+    .main-lantern {
+        margin-bottom: 30px;
+    }
+
+    .release-button {
+        padding: 15px 35px;
+        font-size: 12px;
+        margin-bottom: 30px;
+        letter-spacing: 1.5px;
+    }
+
+    .wish-message {
+        font-size: 13px;
+        padding: 0 10px;
+    }
+
+    .floating-lantern {
+        width: 50px;
+    }
+
+    .venue-section {
+        padding: 60px 15px 120px 15px;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+
+    .venue-pretitle {
+        font-size: 9px;
+        letter-spacing: 2px;
+    }
+
+    .venue-title {
+        font-size: 36px;
+        margin-bottom: 25px;
+    }
+
+    .venue-divider {
+        margin: 25px auto 40px;
+    }
+
+    .venue-map-card {
+        border-radius: 12px;
+    }
+
+    .venue-details {
+        padding: 35px 20px;
+    }
+
+    .venue-name {
+        font-size: 28px;
+        margin-bottom: 12px;
+    }
+
+    .venue-address {
+        font-size: 14px;
+        margin-bottom: 28px;
+        padding: 0 10px;
+    }
+
+    .maps-button {
+        padding: 15px 35px;
+        font-size: 12px;
+        letter-spacing: 1.5px;
+    }
+
+    .footer {
+        padding: 80px 15px 60px;
+    }
+
+    .bouquet-image {
+        max-width: 150px;
+        width: 60%;
+    }
+
+    .footer-bouquet {
+        margin-bottom: 35px;
+    }
+
+    .footer-message {
+        font-size: 20px;
+        margin-bottom: 30px;
+        padding: 0 15px;
+    }
+
+    .footer-names {
+        font-size: 30px;
+    }
+
+    .footer-ampersand {
+        font-size: 24px;
+        margin: 3px 0;
+    }
+
+    .footer-lantern {
+        width: 40px;
+    }
+
+    .lantern-1 {
+        width: 50px;
+        right: 5%;
+    }
+
+    .lantern-2 {
+        width: 38px;
+        left: 8%;
+    }
+
+    .lantern-3 {
+        width: 42px;
+        right: 10%;
+    }
+
+    .lantern-4 {
+        width: 45px;
+        left: 12%;
+    }
+
+    .lantern-5 {
+        width: 35px;
+        right: 25%;
+    }
+}
+
+/* ===== Smooth Animations ===== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* ===== Loading State ===== */
+body.loading {
+    overflow: hidden;
+}
+
+/* ===== Confetti Canvas ===== */
+.confetti-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+}
